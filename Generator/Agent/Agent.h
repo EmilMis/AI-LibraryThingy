@@ -1,13 +1,6 @@
 #include "Generator/Generator.h"
 #include <vector>
 
-void print_vector(std::vector<double> some_fricking_vector){
-    for (auto element : some_fricking_vector){
-        std::cout << element << " ";
-    }
-    std::cout << "\n";
-}
-
 class Agent{
     double simple_fitness(std::vector<double> predicted, std::vector<double> expected);
 public:
