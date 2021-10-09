@@ -5,13 +5,21 @@
 class AgentGenerator{
 public:
     AgentGenerator();
-    Network edit_network(Network network, int layer, int neuron, Neuron this_neuron);
+    std::vector<std::vector<std::vector<int>>> generateIndexesToModify(int size);
 };
 
-Network AgentGenerator::edit_network(Network network, int layer, int neuron, Neuron this_neuron) {
-    Network edited_network = std::move(network);
-    edited_network.layers[layer].neurons[neuron] = std::move(this_neuron);
-    return edited_network;
+std::vector<std::vector<std::vector<int>>> AgentGenerator::generateIndexesToModify(int size) {
+    std::vector<std::vector<std::vector<int>>> result = {};
+    for (int i = 0; i < size + 1; ++i) {
+        std::vector<std::vector<int>> prop_distribution = {};
+        for (int j = 0; j < size - i; ++j) {
+            std::vector<int> prop = {};
+            for (int k = 0; k < i; ++k) {
+                std::cout << k + i << " ";
+            }
+        }
+    }
+    return {{{}}};
 }
 
 AgentGenerator::AgentGenerator() = default;

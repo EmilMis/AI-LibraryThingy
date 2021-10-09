@@ -1,20 +1,18 @@
-#include "Generator/Agent/Agent.h"
+#include "Generator/Agent/AgentGenerator.h"
+#include <iostream>
 
-
+void print_bigg_vector(std::vector<std::vector<std::vector<int>>> bigg_vector){
+    for (auto big_vector : bigg_vector){
+        for(auto vector : big_vector){
+            for (auto element : vector){
+                std::cout << element << " ";
+            }
+        }
+    }
+    std::cout << "\n";
+}
 
 int main(){
-    Generator generator = Generator();
-    Agent agent = Agent(
-            generator.generate_random_network({1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 172000, 2}, 2)
-            );
-    for (auto something : agent.forward({1, 1})){
-        std::cout << something << " ";
-    }
-    std::cout << "\nNow Agent1\n";
-    Agent agent1 = Agent(
-            agent.export_network()
-            );
-    for (auto something : agent1.forward({1, 1})){
-        std::cout << something << " ";
-    }
+    AgentGenerator agentGenerator = AgentGenerator();
+    agentGenerator.generateIndexesToModify(2);
 }
