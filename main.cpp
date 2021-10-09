@@ -15,4 +15,5 @@ int main(){
     std::vector<std::vector<std::vector<double>>> exported_agent = agent.export_network();
     agent2.load_network(exported_agent);
     print_vector(agent2.network.forward({1, 1}));
+    //Just Ignore this for now...
 }
