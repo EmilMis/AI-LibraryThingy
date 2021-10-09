@@ -1,4 +1,5 @@
 #include "Generator/Generator.h"
+#include <utility>
 #include <vector>
 
 class Agent{
@@ -6,12 +7,22 @@ class Agent{
 public:
     Network network;
     Agent(Network agent_network);
+    Agent(std::vector<std::vector<std::vector<double>>> exported_network);
     double fitness(std::vector<double> inputs, std::vector<double> expected);
     std::vector<double> export_neuron(Neuron neuron);
     std::vector<std::vector<std::vector<double>>> export_network();
     Neuron load_neuron(std::vector<double> exported_neuron);
     void load_network(std::vector<std::vector<std::vector<double>>> exported_network);
+    std::vector<double> forward(std::vector<double> inputs);
 };
+
+std::vector<double> Agent::forward(std::vector<double> inputs) {
+    return network.forward(inputs);
+}
+
+Agent::Agent(std::vector<std::vector<std::vector<double>>> exported_network) {
+    load_network(std::move(exported_network));
+}
 
 void Agent::load_network(std::vector<std::vector<std::vector<double>>> exported_network) {
     std::vector<std::vector<double>> network_data = exported_network[0];
