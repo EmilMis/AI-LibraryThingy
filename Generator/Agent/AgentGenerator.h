@@ -8,6 +8,7 @@ public:
     std::vector<std::vector<int>> generateIndexesToModify(int size);
     std::vector<Agent> generate_agents(Agent base, double offset);
     double get_size(std::vector<std::vector<double>> big_vector);
+    std::vector<std::vector<double>> edit(std::vector<std::vector<double>> list, double index, double element);
 };
 
 double AgentGenerator::get_size(std::vector<std::vector<double>> big_vector) {
@@ -18,12 +19,26 @@ double AgentGenerator::get_size(std::vector<std::vector<double>> big_vector) {
     return size;
 }
 
-
+std::vector<std::vector<double>> AgentGenerator::edit(std::vector<std::vector<double>> list, double index, double element) {
+    int current_index = 0;
+    for(auto vector : list){
+        current_index += vector.size();
+        if (current_index > index){
+            for (auto element : vector){
+                std::cout << element << " ";
+            }
+            return {{}};
+        }
+    }
+    std::cout << "\n";
+    return {{}};
+}
 
 std::vector<Agent> AgentGenerator::generate_agents(Agent base, double offset) {
     std::vector<std::vector<std::vector<double>>> base_exported = base.export_network();
     std::vector<std::vector<double>> base_network_exported = base_exported[0];
     std::vector<double> base_build_exported = base_exported[1][0];
+    return {Agent(Generator().generate_random_network({1, 2, 1}, 1))};
 }
 
 std::vector<std::vector<int>> AgentGenerator::generateIndexesToModify(int size) {
