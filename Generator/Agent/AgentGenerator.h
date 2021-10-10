@@ -18,6 +18,8 @@ double AgentGenerator::get_size(std::vector<std::vector<double>> big_vector) {
     return size;
 }
 
+
+
 std::vector<Agent> AgentGenerator::generate_agents(Agent base, double offset) {
     std::vector<std::vector<std::vector<double>>> base_exported = base.export_network();
     std::vector<std::vector<double>> base_network_exported = base_exported[0];
