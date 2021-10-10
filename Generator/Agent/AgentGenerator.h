@@ -10,13 +10,19 @@ public:
 
 std::vector<std::vector<int>> AgentGenerator::generateIndexesToModify(int size) {
     std::vector<std::vector<int>> results = {};
-    for (int j = 0; j < size; ++j) {
-        for (int k = 0; k < size; ++k) {
-            results.push_back({j, k});
-            std::cout << j << " " << k << "\n";
+    for (int i = 0; i < size; ++i) {
+        std::vector<std::vector<int>> pack = {};
+        for (int j = 0; j < size - i; ++j) {
+            std::vector<int> mini_pack = {};
+            for (int k = 0; k < i + 1; ++k) {
+                mini_pack.push_back(k + j);
+                std::cout << k + j << " ";
+                }
+            std::cout << "   ";
         }
+        std::cout << "\n";
     }
-    return results;
+    return {{{}}};
 }
 
 AgentGenerator::AgentGenerator() = default;
