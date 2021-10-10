@@ -14,5 +14,5 @@ void print_bigg_vector(std::vector<std::vector<std::vector<int>>> bigg_vector){
 
 int main(){
     AgentGenerator agentGenerator = AgentGenerator();
-    agentGenerator.generateIndexesToModify(2);
+    agentGenerator.generateIndexesToModify(3);
 }
