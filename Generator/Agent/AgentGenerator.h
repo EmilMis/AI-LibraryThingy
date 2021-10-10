@@ -9,6 +9,7 @@ public:
 };
 
 std::vector<std::vector<int>> AgentGenerator::generateIndexesToModify(int size) {
+    //small, but powerful
     std::vector<std::vector<int>> results = {};
     for (int i = 0; i < size; ++i) {
         std::vector<std::vector<int>> pack = {};
