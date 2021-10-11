@@ -3,4 +3,4 @@ project(AI-remastered)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AI main.cpp Network/Neuron.h Network/Layer.h Network/Network.h Random/Random.h Generator/Generator.h Generator/Agent/Agent.h Generator/Agent/AgentGenerator.h)
+add_executable(AI main.cpp Network/Neuron.h Network/Layer.h Network/Network.h Random/Random.h Generator/Generator.h Generator/Agent/Agent.h Generator/Agent/AgentGenerator.h Generator/Agent/AgentSystem.h)
