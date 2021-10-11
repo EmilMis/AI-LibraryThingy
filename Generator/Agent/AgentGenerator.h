@@ -87,16 +87,17 @@ std::vector<Agent> AgentGenerator::generate_agents(Agent base, double offset) {
     std::vector<Agent> agents = {};
     double agent_size = base.export_network()[0].size();
     std::vector<std::vector<double>> indexes_modify = generateIndexesToModify(agent_size);
-    for (auto index_pack : indexes_modify){
-        agents.push_back(
-                mutate_indexes(base, offset, index_pack)
-                );
-    }
-    for (auto index_pack : indexes_modify){
-        agents.push_back(
-                mutate_indexes(base, -offset, index_pack)
-        );
-    }
+        for (auto index_pack: indexes_modify) {
+            agents.push_back(
+                    mutate_indexes(base, offset, index_pack)
+            );
+        }
+        for (auto index_pack: indexes_modify) {
+            agents.push_back(
+                    mutate_indexes(base, -offset, index_pack)
+            );
+        }
+
     return agents;
 }
 
