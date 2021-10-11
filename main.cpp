@@ -15,7 +15,8 @@ void print_bigg_vector(std::vector<std::vector<std::vector<int>>> bigg_vector){
 int main(){
     /*
     AgentGenerator agentGenerator = AgentGenerator();
-    std::vector<std::vector<int>> generated = agentGenerator.generateIndexesToModify(37);
+    std::vector<std::vector<int>> generated = agentGenerator.generateIndexesToModify(15);
+    std::cout << "done";
     for (auto big_vector : generated){
         for (auto vector : big_vector){
                 std::cout << vector << " ";
@@ -23,19 +24,10 @@ int main(){
         std::cout << "\n";
     }
     std::cout << "\n";*/
-
-    AgentGenerator agentGenerator = AgentGenerator();
-    std::vector<std::vector<double>> sample_list = {
-            {1, 2, 3},
-            {4, 5}
+    std::vector<std::vector<double>> list = {
+            {1, 2},
+            {3, 4}
     };
-    //std::cout << agentGenerator.get_size(sample_list);
-    sample_list = agentGenerator.edit(sample_list, 2, 6);
-    /*
-    for (auto vector : sample_list){
-        for (auto element : vector){
-            std::cout << element << " ";
-        }
-        std::cout << "\n";
-    }*/
+    AgentGenerator agentGenerator = AgentGenerator();
+    agentGenerator.edit(list, 0, 0);
 }

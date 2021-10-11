@@ -20,17 +20,17 @@ double AgentGenerator::get_size(std::vector<std::vector<double>> big_vector) {
 }
 
 std::vector<std::vector<double>> AgentGenerator::edit(std::vector<std::vector<double>> list, double index, double element) {
-    int current_index = 0;
-    for(auto vector : list){
-        current_index += vector.size();
-        if (current_index > index){
-            for (auto element : vector){
-                std::cout << element << " ";
-            }
-            return {{}};
+    double x_index = 0;
+    double y_index = 0;
+    for (int i = 0; i < index + 1; ++i) {
+        if (i > list[x_index].size() - 1){
+            x_index ++;
+            y_index = 0;
+            continue;
         }
+        y_index = i;
     }
-    std::cout << "\n";
+    std::cout << list[x_index][y_index];
     return {{}};
 }
 
