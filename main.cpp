@@ -33,7 +33,7 @@ int main(){
             {3, 4}
     };
     AgentGenerator agentGenerator = AgentGenerator();
-    list = agentGenerator.edit(list, 11, 0);
+    list = agentGenerator.edit_pp(list, 11, -1);
     for (auto vector : list){
         for (auto element : vector){
             std::cout << element << " ";
