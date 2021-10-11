@@ -24,18 +24,12 @@ int main(){
         std::cout << "\n";
     }
     std::cout << "\n";*/
-    std::vector<std::vector<double>> list = {
-            {1, 2},
-            {3, 4},
-            {3, 4},
-            {3, 4},
-            {3, 4},
-            {3, 4}
-    };
+    Generator generator = Generator();
     AgentGenerator agentGenerator = AgentGenerator();
-    list = agentGenerator.edit_pp(list, 11, -1);
-    for (auto vector : list){
-        for (auto element : vector){
+    Agent agent = Agent(generator.generate_random_network({1, 2}, 1));
+    std::vector<Agent> agets_pop = agentGenerator.generate_agents(agent, 1);
+    for (auto agent : agets_pop){
+        for (auto element : agent.forward({1})){
             std::cout << element << " ";
         }
         std::cout << "\n";

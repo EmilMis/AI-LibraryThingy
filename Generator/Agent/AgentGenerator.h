@@ -5,7 +5,7 @@
 class AgentGenerator{
 public:
     AgentGenerator();
-    std::vector<std::vector<int>> generateIndexesToModify(int size);
+    std::vector<std::vector<double>> generateIndexesToModify(int size);
     std::vector<Agent> generate_agents(Agent base, double offset);
     double get_size(std::vector<std::vector<double>> big_vector);
     std::vector<std::vector<double>> edit(std::vector<std::vector<double>> list, double index, double element);
@@ -84,15 +84,28 @@ std::vector<std::vector<double>> AgentGenerator::edit(std::vector<std::vector<do
 }
 
 std::vector<Agent> AgentGenerator::generate_agents(Agent base, double offset) {
-    return {Agent({{{1.1, 1}, {2.2, 2}}})};
+    std::vector<Agent> agents = {};
+    double agent_size = base.export_network()[0].size();
+    std::vector<std::vector<double>> indexes_modify = generateIndexesToModify(agent_size);
+    for (auto index_pack : indexes_modify){
+        agents.push_back(
+                mutate_indexes(base, offset, index_pack)
+                );
+    }
+    for (auto index_pack : indexes_modify){
+        agents.push_back(
+                mutate_indexes(base, -offset, index_pack)
+        );
+    }
+    return agents;
 }
 
-std::vector<std::vector<int>> AgentGenerator::generateIndexesToModify(int size) {
+std::vector<std::vector<double>> AgentGenerator::generateIndexesToModify(int size) {
     //small, but powerful
-    std::vector<std::vector<int>> results = {};
+    std::vector<std::vector<double>> results = {};
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size - i; ++j) {
-            std::vector<int> mini_pack = {};
+            std::vector<double> mini_pack = {};
             for (int k = 0; k < i + 1; ++k) {
                 mini_pack.push_back(k + j);
             }
