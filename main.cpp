@@ -1,4 +1,4 @@
-#include "Generator/Agent/AgentGenerator.h"
+#include "Generator/Agent/AgentSystem.h"
 #include <iostream>
 
 void print_bigg_vector(std::vector<std::vector<std::vector<int>>> bigg_vector){

@@ -1,8 +1,16 @@
-//
-// Created by emilm on 11/10/2021.
-//
+#include "AgentGenerator.h"
 
-#ifndef AI_REMASTERED_AGENTSYSTEM_H
-#define AI_REMASTERED_AGENTSYSTEM_H
+class AgentSystem{
+public:
+    AgentSystem();
+    Agent train(std::vector<int> build, std::vector<std::vector<std::vector<double>>> train_data, double min_fitness);
+};
 
-#endif //AI_REMASTERED_AGENTSYSTEM_H
+Agent AgentSystem::train(std::vector<int> build, std::vector<std::vector<std::vector<double>>> train_data, double min_fitness) {
+    AgentGenerator agentGenerator = AgentGenerator();
+    Generator generator = Generator();
+    Agent agent = Agent(generator.generate_random_network(build, train_data[0][0].size()));
+    double best_fitness = agent.fitness();
+}
+
+AgentSystem::AgentSystem() = default;

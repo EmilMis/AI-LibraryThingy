@@ -9,12 +9,23 @@ public:
     Agent(Network agent_network);
     Agent(std::vector<std::vector<std::vector<double>>> exported_network);
     double fitness(std::vector<double> inputs, std::vector<double> expected);
+    double full_fitness(std::vector<std::vector<std::vector<double>>> train_data);
     std::vector<double> export_neuron(Neuron neuron);
     std::vector<std::vector<std::vector<double>>> export_network();
     Neuron load_neuron(std::vector<double> exported_neuron);
     void load_network(std::vector<std::vector<std::vector<double>>> exported_network);
     std::vector<double> forward(std::vector<double> inputs);
 };
+
+double Agent::full_fitness(std::vector<std::vector<std::vector<double>>> train_data) {
+    double all_fitness = 0;
+    for (auto train_sample : train_data){
+        all_fitness += (
+                fitness(train_sample[0], train_sample[1])
+                );
+    }
+    return all_fitness;
+}
 
 std::vector<double> Agent::forward(std::vector<double> inputs) {
     return network.forward(inputs);
