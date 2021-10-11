@@ -26,8 +26,18 @@ int main(){
     std::cout << "\n";*/
     std::vector<std::vector<double>> list = {
             {1, 2},
+            {3, 4},
+            {3, 4},
+            {3, 4},
+            {3, 4},
             {3, 4}
     };
     AgentGenerator agentGenerator = AgentGenerator();
-    agentGenerator.edit(list, 0, 0);
+    list = agentGenerator.edit(list, 11, 0);
+    for (auto vector : list){
+        for (auto element : vector){
+            std::cout << element << " ";
+        }
+        std::cout << "\n";
+    }
 }

@@ -20,18 +20,29 @@ double AgentGenerator::get_size(std::vector<std::vector<double>> big_vector) {
 }
 
 std::vector<std::vector<double>> AgentGenerator::edit(std::vector<std::vector<double>> list, double index, double element) {
-    double x_index = 0;
-    double y_index = 0;
-    for (int i = 0; i < index + 1; ++i) {
-        if (i > list[x_index].size() - 1){
-            x_index ++;
-            y_index = 0;
-            continue;
+    std::vector<double> list_export = {};
+    std::vector<double> list_build = {};
+    std::vector<std::vector<double>> list_rebuild = {};
+
+    for (auto vector : list){
+        list_build.push_back(vector.size());
+        for (auto element : vector){
+            list_export.push_back(element);
         }
-        y_index = i;
     }
-    std::cout << list[x_index][y_index];
-    return {{}};
+
+    double rebuild_index = 0;
+
+    list_export[index] = element;
+    for(auto build_info : list_build){
+        std::vector<double> rebuild_element = {};
+        for (int i = 0; i < build_info; ++i) {
+            rebuild_element.push_back(list_export[rebuild_index]);
+            rebuild_index ++;
+        }
+        list_rebuild.push_back(rebuild_element);
+    }
+    return list_rebuild;
 }
 
 std::vector<Agent> AgentGenerator::generate_agents(Agent base, double offset) {
